@@ -68,7 +68,7 @@ const Experience = () => {
       <Heading mb={8} fontSize={['2xl', '2xl', '5xl']} textAlign="center">
         My Experience
       </Heading>
-      <VerticalTimeline lineColor='black'>
+      <VerticalTimeline lineColor='gray'>
         {experiences.map((experience, index) => (
           <VerticalTimelineElement
             key={index}
@@ -78,9 +78,9 @@ const Experience = () => {
             contentStyle={{
               background: 'black',
               color: '#fff',
-              boxShadow: '0 3px 10px rgba(0, 0, 0, 0.3)',
+              boxShadow: '0 3px 10px #cc0044',
             }}
-            contentArrowStyle={{ borderRight: '7px solid #cc0044' }}
+            contentArrowStyle={{ borderRight: '10px solid white',margin:'8px' }}
           >
             <Heading as="h3" fontSize="xl" mb={2} color="#cc0044">
               {experience.title}

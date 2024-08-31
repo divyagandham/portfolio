@@ -16,13 +16,18 @@ import {
   ModalBody,
   ModalFooter,
   useDisclosure,
+  GridItem,
+  Grid,
+  Flex,
+  useBreakpointValue
 } from '@chakra-ui/react';
 import { ExternalLinkIcon } from '@chakra-ui/icons';
 
 const projects = [
   {
     title: 'Nxt Trendz ( ECommerce Clone - Amazon, Flipkart)',
-    image: 'images/nxttrendz.png', 
+    image: 'images/nxttrendz.png',
+    images: ['images/nxttrendz.png', 'images/nxttrendz.png', 'images/nxttrendz.png', 'images/nxttrendz.png', 'images/nxttrendz.png', 'images/nxttrendz.png'],
     shortDescription: 'Developed Nxt Trendz, an eCommerce clone like Amazon and Flipkart, with user login, product listing, search, filters, and sorting.',
     fullDescription: [
       'Created pages and routes for login, products, and product details using React Router.',
@@ -34,7 +39,8 @@ const projects = [
   },
   {
     title: 'Jobby App',
-    image: 'images/jobbyapp.png', 
+    image: 'images/jobbyapp.png',
+    images: ['images/jobbyapp.png', 'images/jobbyapp.png', 'images/jobbyapp.png', 'images/jobbyapp.png', 'images/jobbyapp.png', 'images/jobbyapp.png'],
     shortDescription: 'Implemented Jobby App where users can log in and can see a list of jobs with search by Job title, filters based on Salary range and Employment type, etc',
     fullDescription: [
       'Implemented user authentication via a login API, with JWT stored for session persistence and authorization.',
@@ -49,6 +55,7 @@ const projects = [
   {
     title: 'Emoji Game',
     image: 'images/emoji.png',
+    images: ['images/emoji.png', 'images/emoji.png', 'images/emoji.png', 'images/emoji.png', 'images/emoji.png', 'images/emoji.png'],
     shortDescription: 'Created a responsive Emoji Memory Game where users win by clicking unique emojis until all are clicked, with emojis randomized after each click.',
     fullDescription: [
       'Displayed the emoji list using React components, props, conditional rendering, and CSS for styling.',
@@ -60,6 +67,7 @@ const projects = [
   {
     title: 'Wikipedia Search Application',
     image: 'images/wikipedia.png',
+    images: ['images/wikipedia.png', 'images/wikipedia.png', 'images/wikipedia.png', 'images/wikipedia.png', 'images/wikipedia.png', 'images/wikipedia.png'],
     shortDescription: 'Developed a custom Wikipedia Search App where users can search, view curated results, and access detailed Wikipedia articles.',
     fullDescription: [
       'Displayed search results as HTML lists with hyperlinks, styled with CSS/Bootstrap, and ensured responsiveness using Flexbox and CSS Box Model.',
@@ -70,7 +78,8 @@ const projects = [
   },
   {
     title: 'Money Manager',
-    image: 'images/money.png', 
+    image: 'images/money.png',
+    images: ['images/money.png', 'images/money.png', 'images/money.png', 'images/money.png', 'images/money.png', 'images/money.png',],
     shortDescription: 'Created a responsive Money Manager platform where users can add their income, expenses and balance.',
     fullDescription: [
       'Implemented financial CRUD operations with React’s state management, updating the UI in real-time.',
@@ -81,7 +90,8 @@ const projects = [
   },
   {
     title: 'Todos Application',
-    image: 'images/todo.png', 
+    image: 'images/todo.png',
+    images: ['images/todo.png', 'images/todo.png', 'images/todo.png', 'images/todo.png', 'images/todo.png', 'images/todo.png'],
     shortDescription: 'Developed persistent todo application with CRUD operations to track list of tasks.',
     fullDescription: [
       'Displayed list of todos with HTML list elements, styled todo list using CSS, Bootstrap.',
@@ -91,7 +101,7 @@ const projects = [
     technologies: ['JavaScript, HTML. CSS, Bootstrap'],
     liveLink: 'https://divyaatodo.ccbp.tech/',
   },
- 
+
 ];
 
 const ProjectShowcase = () => {
@@ -102,9 +112,15 @@ const ProjectShowcase = () => {
     setSelectedProject(project);
     onOpen();
   };
+  const gridTemplateColumns = useBreakpointValue({
+    base: 'repeat(2, 1fr)', // 2 columns for smaller screens
+    md: 'repeat(3, 1fr)',   // 3 columns for medium screens
+    lg: 'repeat(3, 1fr)',   // 3 columns for large screens
+    xl: 'repeat(3, 1fr)',   // 3 columns for extra large screens
+  });
 
   return (
-    <Box p={[4, 6, 12]} bg="gray.800" color="white">
+    <Box p={[4, 6, 12]} color="white">
       <Heading mb={8} fontSize={['2xl', '3xl', '5xl']} textAlign="center">
         My Projects
       </Heading>
@@ -119,6 +135,7 @@ const ProjectShowcase = () => {
             _hover={{ transform: 'scale(1.05)', transition: '0.3s ease-in-out' }}
             cursor="pointer"
             onClick={() => handleProjectClick(project)}
+            style={{ boxShadow: '0 3px 10px indigo' }} // #cc0044'
           >
             <Image src={project.image} alt={project.title} borderRadius="md" mb={4} />
             <Heading as="h3" fontSize="xl" mb={2} color="#cc0044">
@@ -130,13 +147,63 @@ const ProjectShowcase = () => {
       </SimpleGrid>
 
       {selectedProject && (
-        <Modal isOpen={isOpen} onClose={onClose} size="lg">
+        // <Modal isOpen={isOpen} onClose={onClose} size="lg">
+        //   <ModalOverlay />
+        //   <ModalContent bg="gray.700" color="white">
+        //     <ModalHeader mt={4}>{selectedProject.title}</ModalHeader>
+        //     <ModalCloseButton />
+        //     <ModalBody>
+        //       <Image src={selectedProject.image} alt={selectedProject.title} borderRadius="md" mb={4} />
+        //       <Stack spacing={3}>
+        //         {selectedProject.fullDescription.map((point, idx) => (
+        //           <Text key={idx}>&#8226; {point}</Text>
+        //         ))}
+        //       </Stack>
+        //       <Text fontWeight="bold" mt={4} mb={2} color="gray.300">
+        //         Technologies Used:
+        //       </Text>
+        //       <Text>{selectedProject.technologies.join(', ')}</Text>
+        //     </ModalBody>
+
+        //     <ModalFooter>
+        //       <Link href={selectedProject.liveLink} isExternal>
+        //         <Button colorScheme="red" variant="outline" rightIcon={<ExternalLinkIcon />}>
+        //           View Live
+        //         </Button>
+        //       </Link>
+        //       <Button ml={3} onClick={onClose}>
+        //         Close
+        //       </Button>
+        //     </ModalFooter>
+        //   </ModalContent>
+        // </Modal>
+        <Modal isOpen={isOpen} onClose={onClose} size="6xl"> {/* Increased modal size to '6xl' */}
           <ModalOverlay />
-          <ModalContent bg="gray.700" color="white">
-            <ModalHeader mt={4}>{selectedProject.title}</ModalHeader>
+          <ModalContent bg="gray.700" color="white"> {/* Maximum width and height for responsiveness */}
+            <Flex direction="row"
+              // display={['none', 'none', 'flex']} // Hide on mobile/tablet, show on desktop
+              // justifyContent="space-between"
+              alignItems="center"
+              rowGap={10}
+              >
+              <div><ModalHeader mt={4}>{selectedProject.title}</ModalHeader></div>
+              <Link href={selectedProject.liveLink} isExternal>
+                <Button colorScheme="red" variant="outline" mt={5} rightIcon={<ExternalLinkIcon />}>
+                  View Live
+                </Button>
+              </Link>
+            </Flex>
             <ModalCloseButton />
             <ModalBody>
-              <Image src={selectedProject.image} alt={selectedProject.title} borderRadius="md" mb={4} />
+              {/* Responsive grid layout for images */}
+              <Grid templateColumns={gridTemplateColumns} gap={4} mb={4}>
+                {selectedProject.images.map((image, idx) => (
+                  <GridItem key={idx}>
+                    <Image src={image} alt={selectedProject.title} borderRadius="md" w="100%" h="auto" />
+                  </GridItem>
+                ))}
+              </Grid>
+              {/* Project description */}
               <Stack spacing={3}>
                 {selectedProject.fullDescription.map((point, idx) => (
                   <Text key={idx}>&#8226; {point}</Text>
@@ -149,11 +216,6 @@ const ProjectShowcase = () => {
             </ModalBody>
 
             <ModalFooter>
-              <Link href={selectedProject.liveLink} isExternal>
-                <Button colorScheme="red" variant="outline" rightIcon={<ExternalLinkIcon />}>
-                  View Live
-                </Button>
-              </Link>
               <Button ml={3} onClick={onClose}>
                 Close
               </Button>

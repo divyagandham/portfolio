@@ -1,11 +1,12 @@
 import React, { useRef, useState, useEffect } from 'react';
 import { Box, Flex, Link, Spacer, IconButton, useDisclosure, Text } from '@chakra-ui/react';
+import { Global } from '@emotion/react';
 import { HamburgerIcon, CloseIcon } from '@chakra-ui/icons';
 import Home from './components/Home';
-import Expertise from './components/Expertise';
+import Expertise from './components/Expertise'
 import Experience from './components/Experience';
-import Projects from './components/Projects';
-import About from './components/About';
+import Projects from './components/Projects'
+import About from './components/About'
 
 const App = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -28,11 +29,6 @@ const App = () => {
     });
 
     setActiveSection(section);
-
-    // Close the menu on mobile after clicking a link
-    if (isOpen) {
-      onClose();
-    }
   };
 
   useEffect(() => {
@@ -66,12 +62,44 @@ const App = () => {
   }, [activeSection]);
 
   return (
-    <Box bg="gray.800" color="white" minHeight="100vh">
+    <Box>
+      {/* Global styles for the custom scrollbar and cursor */}
+      <Global
+        styles={`
+          body {
+            cursor: url('src\cursor.svg') 16 16, auto; /* Replace 'cursor.svg' with your actual path */
+          }
+
+          ::-webkit-scrollbar {
+            width: 8px;
+          }
+          
+          ::-webkit-scrollbar-track {
+            background: #111; /* Background of the scrollbar track */
+          }
+          
+          ::-webkit-scrollbar-thumb {
+            background-color: #cc0044; /* Color of the scrollbar thumb */
+            border-radius: 20px; /* Round the scrollbar thumb */
+            border: 2px solid #111; /* Padding around the thumb */
+          }
+          
+          ::-webkit-scrollbar-thumb:hover {
+            background-color: #ff3366; /* Change color on hover */
+          }
+          
+          /* Firefox scrollbar styles */
+          html {
+            scrollbar-width: thin;
+            scrollbar-color: grey #1111;
+          }
+        `}
+      />
 
       <Flex
         as="header"
         bg="black"
-        p={5}
+        p={4}
         color="white"
         alignItems="center"
         position="fixed"
@@ -88,7 +116,7 @@ const App = () => {
             fontSize="lg"
             cursor="pointer"
           >
-            Divya Gandham <span style={{ color: 'white' }}>.</span> _
+            RiyazAhammad <span style={{ color: 'white' }}>.</span> _
           </Text>
         )}
         <Spacer />
@@ -113,14 +141,14 @@ const App = () => {
           display={{ base: isOpen ? 'flex' : 'none', md: 'flex' }}
           alignItems="center"
           mt={2}
-          mr={500}
+          mr={400}
         >
           {[
-            { name: 'Home', ref: homeRef, id: 'home' },
-            { name: 'Expertise', ref: expertiseRef, id: 'expertise' },
-            { name: 'Projects', ref: projectsRef, id: 'projects' },
-            { name: 'Experience', ref: experienceRef, id: 'experience' },
-            { name: 'Contact', ref: aboutRef, id: 'about' },
+            { name: '//01 Home', ref: homeRef, id: 'home' },
+            { name: '//02 Expertise', ref: expertiseRef, id: 'expertise' },
+            { name: '//03 Projects', ref: projectsRef, id: 'projects' },
+            { name: '//04 Experience', ref: experienceRef, id: 'experience' },
+            { name: '//05 About', ref: aboutRef, id: 'about' },
           ].map(({ name, ref, id }) => (
             <Link
               key={id}
@@ -143,20 +171,22 @@ const App = () => {
           ))}
         </Flex>
       </Flex>
-      <Box p={4} mt="80px">
-        <Box ref={homeRef} minHeight="100%" pt="80px">
+      <Box p={4}>
+        <Box ref={homeRef} minHeight="100vh" pt="220px"
+        >
+          {/* <h1>Home</h1> */}
           <Home />
         </Box>
-        <Box ref={expertiseRef} minHeight="100%" pt="60px">
+        <Box ref={expertiseRef} minHeight="100vh" pt="80px">
           <Expertise />
         </Box>
-        <Box ref={projectsRef} minHeight="100%" pt="50px">
+        <Box ref={projectsRef} minHeight="100vh" pt="30px">
           <Projects />
         </Box>
-        <Box ref={experienceRef} minHeight="100%" pt="50px">
+        <Box ref={experienceRef} minHeight="100vh" pt="20px">
           <Experience />
         </Box>
-        <Box ref={aboutRef} minHeight="100%" pt="50px">
+        <Box ref={aboutRef} minHeight="100vh" pt="10px">
           <About />
         </Box>
       </Box>
