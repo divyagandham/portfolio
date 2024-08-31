@@ -28,6 +28,11 @@ const App = () => {
     });
 
     setActiveSection(section);
+
+    // Close the menu on mobile after clicking a link
+    if (isOpen) {
+      onClose();
+    }
   };
 
   useEffect(() => {
@@ -66,7 +71,7 @@ const App = () => {
       <Flex
         as="header"
         bg="black"
-        p={4}
+        p={5}
         color="white"
         alignItems="center"
         position="fixed"
@@ -108,7 +113,7 @@ const App = () => {
           display={{ base: isOpen ? 'flex' : 'none', md: 'flex' }}
           alignItems="center"
           mt={2}
-          mr={400}
+          mr={500}
         >
           {[
             { name: 'Home', ref: homeRef, id: 'home' },
@@ -139,8 +144,7 @@ const App = () => {
         </Flex>
       </Flex>
       <Box p={4} mt="80px">
-        <Box ref={homeRef} minHeight="100%" pt="80px"
-        >
+        <Box ref={homeRef} minHeight="100%" pt="80px">
           <Home />
         </Box>
         <Box ref={expertiseRef} minHeight="100%" pt="60px">
@@ -161,4 +165,3 @@ const App = () => {
 };
 
 export default App;
-

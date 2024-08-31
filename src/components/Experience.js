@@ -43,7 +43,7 @@ const Experience = () => {
       date: '2022 - Present',
       title: 'Frontend Developer',
       company: 'Comviva Technologies',
-      description: 'As a frontend developer, I have built responsive web interfaces using HTML, CSS, and JavaScript framework like React.js. I have  also developed cross-platform mobile apps with React Native, ensuring consistent performance on iOS and Android. My work includes state management, API integration, and collaboration in agile environments using Git for version control.',
+      description: 'Working as Frontend Developer for "MyMTN SA" Mobile Application from assessment of UI/UX designs for technical feasibility to deployment.Integrated REST APIs and third-party services like Payment Gateway Portals in the Mobile Application, including provisioning for Card Payments.One major achievement among many includes revamping an entire existing Mobile Application code with a new and modern technological stack, which led to a boosted performance at a conversion rate of 80%.Helped to increase Customer Return Rates by providing a sleek and responsive user interface and experience.Performed code reviews, unit testing, and resolved defects throughout the product lifecycle.',
     },
     {
       date: '2021 - 2022',

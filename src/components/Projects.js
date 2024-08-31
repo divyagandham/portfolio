@@ -35,7 +35,7 @@ const projects = [
   {
     title: 'Jobby App',
     image: 'images/jobbyapp.png', 
-    shortDescription: 'Developed Jobby App with user login, job listings, search by title, salary filters, and employment type.',
+    shortDescription: 'Implemented Jobby App where users can log in and can see a list of jobs with search by Job title, filters based on Salary range and Employment type, etc',
     fullDescription: [
       'Implemented user authentication via a login API, with JWT stored for session persistence and authorization.',
       'Authenticating by taking username, password and doing login post HTTP API Call.',
@@ -73,22 +73,23 @@ const projects = [
     image: 'images/money.png', 
     shortDescription: 'Created a responsive Money Manager platform where users can add their income, expenses and balance.',
     fullDescription: [
-      'Displayed the emoji list using React components, props, conditional rendering, and CSS for styling.',
-      'Managed game states like emoji list, win, and loss using state variables and conditional rendering.'
+      'Implemented financial CRUD operations with React’s state management, updating the UI in real-time.',
+      'Utilized React hooks for managing state and local storage for persisting data across page reloads.'
     ],
     technologies: ['React JS, JavaScript, CSS, Bootstrap'],
     liveLink: 'https://divyaamoneyy.ccbp.tech/',
   },
   {
-    title: 'Emoji Game',
-    image: 'images/emoji.png', 
-    shortDescription: 'Created a responsive Emoji Memory Game where users win by clicking unique emojis until all are clicked, with emojis randomized after each click.',
+    title: 'Todos Application',
+    image: 'images/todo.png', 
+    shortDescription: 'Developed persistent todo application with CRUD operations to track list of tasks.',
     fullDescription: [
-      'Displayed the emoji list using React components, props, conditional rendering, and CSS for styling.',
-      'Managed game states like emoji list, win, and loss using state variables and conditional rendering.'
+      'Displayed list of todos with HTML list elements, styled todo list using CSS, Bootstrap.',
+      'Implemented todo crud operations by using JavaScript event listeners and updated UI dynamically by using JavaScript DOM operations.',
+      'Used Arrays, Objects and their methods during todolist CRUD Operations, Persisted todo list state on page reloads using local storage methods.'
     ],
-    technologies: ['React JS, JavaScript, CSS, Bootstrap'],
-    liveLink: 'https://divyaaemojigame.ccbp.tech/',
+    technologies: ['JavaScript, HTML. CSS, Bootstrap'],
+    liveLink: 'https://divyaatodo.ccbp.tech/',
   },
  
 ];

@@ -25,7 +25,7 @@ const About = () => {
     e.preventDefault();
 
     emailjs
-      .sendForm('service_ai6gzmn', 'template_vuqie4r', form.current, 'kEw0ZERVvwwVQ6wSq')
+      .sendForm('service_ai6gzmn', 'template_y1cy8nc', form.current, 'kEw0ZERVvwwVQ6wSq')
       .then(
         (result) => {
           toast({

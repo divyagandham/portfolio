@@ -60,19 +60,17 @@ const Home = () => {
 
   return (
     <Box
-      bg="black" // Background color
-      // minHeight="100vh"
+      bg="black"
       borderRadius={8}
       display="flex"
       alignItems="center"
       justifyContent="center"
       color="white"
-      p={4}
+      p={6}
       animation={`${fadeIn} 2s ease-in`}
     >
       <Flex
         direction={flexDirection}
-        maxW="1200px"
         w="full"
         spacing={4}
         alignItems="center"
@@ -97,7 +95,7 @@ const Home = () => {
             />
             <br></br>
             <Typewriter speed={100} text="Feel free to explore and get in touch!"/> */}
-            As a versatile Frontend Developer, I specialize in building both web and mobile applications using React.js and React Native. My technical skill set includes backend development with Node.js, as well as database management with SQL. Proficient in HTML, CSS, and JavaScript, I effectively utilize modern frameworks and libraries to create responsive, user-friendly applications.
+            As a versatile Frontend Developer, I build web and mobile apps with React.js and React Native. Skilled in Node.js for backend development, SQL for database management, and proficient in HTML, CSS, and JavaScript. I create responsive, user-friendly applications using modern frameworks and libraries.
             <br></br>
             Feel free to explore and get in touch!
           </Text>
@@ -109,9 +107,9 @@ const Home = () => {
         </Box>
         {showImage ? (
           <Image
-            src="https://www.aceinfoway.com/blog/wp-content/uploads/2020/07/front-end-developer.jpg"
+            src="/images/profile.jpg"
             alt={name}
-            boxSize={{ base: '200px', md: '250px' }}
+            boxSize={{ base: '200px', md: '200px' }}
             objectFit="cover"
             borderRadius="full"
             boxShadow="0 4px 8px rgba(0, 0, 0, 0.5)" // Image shadow
@@ -136,7 +134,7 @@ const Home = () => {
               animation={`${textHackingAnimation} 0.7s linear infinite`}
             >
               Loading
-              <Typewriter speed={110} text=".................."/>
+              <Typewriter speed={110} text="..............."/>
             </Text>
           </Box>
         )}
