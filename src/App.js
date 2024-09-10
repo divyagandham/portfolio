@@ -29,6 +29,10 @@ const App = () => {
     });
 
     setActiveSection(section);
+
+    if (isOpen) {
+      onClose();
+    }
   };
 
   useEffect(() => {
@@ -116,7 +120,7 @@ const App = () => {
             fontSize="lg"
             cursor="pointer"
           >
-            RiyazAhammad <span style={{ color: 'white' }}>.</span> _
+            Divya Gandham <span style={{ color: 'white' }}>.</span> _
           </Text>
         )}
         <Spacer />
@@ -141,14 +145,14 @@ const App = () => {
           display={{ base: isOpen ? 'flex' : 'none', md: 'flex' }}
           alignItems="center"
           mt={2}
-          mr={400}
+          mr={500}
         >
           {[
-            { name: '//01 Home', ref: homeRef, id: 'home' },
-            { name: '//02 Expertise', ref: expertiseRef, id: 'expertise' },
-            { name: '//03 Projects', ref: projectsRef, id: 'projects' },
-            { name: '//04 Experience', ref: experienceRef, id: 'experience' },
-            { name: '//05 About', ref: aboutRef, id: 'about' },
+            { name: 'Home', ref: homeRef, id: 'home' },
+            { name: 'Expertise', ref: expertiseRef, id: 'expertise' },
+            { name: 'Projects', ref: projectsRef, id: 'projects' },
+            { name: 'Experience', ref: experienceRef, id: 'experience' },
+            { name: 'Contact', ref: aboutRef, id: 'about' },
           ].map(({ name, ref, id }) => (
             <Link
               key={id}

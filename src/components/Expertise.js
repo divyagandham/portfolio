@@ -85,7 +85,7 @@ const Expertise = () => {
       opacity={0}
     >
       <Heading mb={8} fontSize={['2xl', '2xl', '5xl']} textAlign="center">
-        My Expertise
+        Expertise
       </Heading>
 
       {/* Desktop view: Single box with vertical dividers */}

@@ -16,10 +16,6 @@ import {
   ModalBody,
   ModalFooter,
   useDisclosure,
-  GridItem,
-  Grid,
-  Flex,
-  useBreakpointValue
 } from '@chakra-ui/react';
 import { ExternalLinkIcon } from '@chakra-ui/icons';
 
@@ -112,17 +108,17 @@ const ProjectShowcase = () => {
     setSelectedProject(project);
     onOpen();
   };
-  const gridTemplateColumns = useBreakpointValue({
-    base: 'repeat(2, 1fr)', // 2 columns for smaller screens
-    md: 'repeat(3, 1fr)',   // 3 columns for medium screens
-    lg: 'repeat(3, 1fr)',   // 3 columns for large screens
-    xl: 'repeat(3, 1fr)',   // 3 columns for extra large screens
-  });
+  // const gridTemplateColumns = useBreakpointValue({
+  //   base: 'repeat(2, 1fr)', // 2 columns for smaller screens
+  //   md: 'repeat(3, 1fr)',   // 3 columns for medium screens
+  //   lg: 'repeat(3, 1fr)',   // 3 columns for large screens
+  //   xl: 'repeat(3, 1fr)',   // 3 columns for extra large screens
+  // });
 
   return (
     <Box p={[4, 6, 12]} color="white">
       <Heading mb={8} fontSize={['2xl', '3xl', '5xl']} textAlign="center">
-        My Projects
+        Projects
       </Heading>
       <SimpleGrid columns={[1, 2, 3]} spacing={10}>
         {projects.map((project, index) => (
@@ -147,13 +143,69 @@ const ProjectShowcase = () => {
       </SimpleGrid>
 
       {selectedProject && (
-        // <Modal isOpen={isOpen} onClose={onClose} size="lg">
+        <Modal isOpen={isOpen} onClose={onClose} size="lg">
+          <ModalOverlay />
+          <ModalContent bg="gray.700" color="white">
+            <ModalHeader mt={4}>{selectedProject.title}</ModalHeader>
+            <ModalCloseButton />
+            <ModalBody>
+              <Image src={selectedProject.image} alt={selectedProject.title} borderRadius="md" mb={4} />
+              <Stack spacing={3}>
+                {selectedProject.fullDescription.map((point, idx) => (
+                  <Text key={idx}>&#8226; {point}</Text>
+                ))}
+              </Stack>
+              <Text fontWeight="bold" mt={4} mb={2} color="black">
+                Technologies Used:
+              </Text>
+              <Text>{selectedProject.technologies.join(', ')}</Text>
+            </ModalBody>
+
+            <ModalFooter>
+              <Link href={selectedProject.liveLink} isExternal>
+                <Button
+                  variant="outline"
+                  rightIcon={<ExternalLinkIcon />}
+                  borderColor="#cc0044"
+                  color="#cc0044"
+                  _hover={{ bg: "#cc0044", color: "black" }}
+                >
+                  View Live
+                </Button>
+              </Link>
+              <Button ml={3} onClick={onClose}>
+                Close
+              </Button>
+            </ModalFooter>
+          </ModalContent>
+        </Modal>
+        // <Modal isOpen={isOpen} onClose={onClose} size="6xl"> {/* Increased modal size to '6xl' */}
         //   <ModalOverlay />
-        //   <ModalContent bg="gray.700" color="white">
-        //     <ModalHeader mt={4}>{selectedProject.title}</ModalHeader>
+        //   <ModalContent bg="gray.700" color="white"> {/* Maximum width and height for responsiveness */}
+        //     <Flex direction="row"
+        //       // display={['none', 'none', 'flex']} // Hide on mobile/tablet, show on desktop
+        //       // justifyContent="space-between"
+        //       alignItems="center"
+        //       rowGap={10}
+        //       >
+        //       <div><ModalHeader mt={4}>{selectedProject.title}</ModalHeader></div>
+        //       <Link href={selectedProject.liveLink} isExternal>
+        //         <Button colorScheme="red" variant="outline" mt={5} rightIcon={<ExternalLinkIcon />}>
+        //           View Live
+        //         </Button>
+        //       </Link>
+        //     </Flex>
         //     <ModalCloseButton />
         //     <ModalBody>
-        //       <Image src={selectedProject.image} alt={selectedProject.title} borderRadius="md" mb={4} />
+        //       {/* Responsive grid layout for images */}
+        //       <Grid templateColumns={gridTemplateColumns} gap={4} mb={4}>
+        //         {selectedProject.images.map((image, idx) => (
+        //           <GridItem key={idx}>
+        //             <Image src={image} alt={selectedProject.title} borderRadius="md" w="100%" h="auto" />
+        //           </GridItem>
+        //         ))}
+        //       </Grid>
+        //       {/* Project description */}
         //       <Stack spacing={3}>
         //         {selectedProject.fullDescription.map((point, idx) => (
         //           <Text key={idx}>&#8226; {point}</Text>
@@ -166,62 +218,12 @@ const ProjectShowcase = () => {
         //     </ModalBody>
 
         //     <ModalFooter>
-        //       <Link href={selectedProject.liveLink} isExternal>
-        //         <Button colorScheme="red" variant="outline" rightIcon={<ExternalLinkIcon />}>
-        //           View Live
-        //         </Button>
-        //       </Link>
         //       <Button ml={3} onClick={onClose}>
         //         Close
         //       </Button>
         //     </ModalFooter>
         //   </ModalContent>
         // </Modal>
-        <Modal isOpen={isOpen} onClose={onClose} size="6xl"> {/* Increased modal size to '6xl' */}
-          <ModalOverlay />
-          <ModalContent bg="gray.700" color="white"> {/* Maximum width and height for responsiveness */}
-            <Flex direction="row"
-              // display={['none', 'none', 'flex']} // Hide on mobile/tablet, show on desktop
-              // justifyContent="space-between"
-              alignItems="center"
-              rowGap={10}
-              >
-              <div><ModalHeader mt={4}>{selectedProject.title}</ModalHeader></div>
-              <Link href={selectedProject.liveLink} isExternal>
-                <Button colorScheme="red" variant="outline" mt={5} rightIcon={<ExternalLinkIcon />}>
-                  View Live
-                </Button>
-              </Link>
-            </Flex>
-            <ModalCloseButton />
-            <ModalBody>
-              {/* Responsive grid layout for images */}
-              <Grid templateColumns={gridTemplateColumns} gap={4} mb={4}>
-                {selectedProject.images.map((image, idx) => (
-                  <GridItem key={idx}>
-                    <Image src={image} alt={selectedProject.title} borderRadius="md" w="100%" h="auto" />
-                  </GridItem>
-                ))}
-              </Grid>
-              {/* Project description */}
-              <Stack spacing={3}>
-                {selectedProject.fullDescription.map((point, idx) => (
-                  <Text key={idx}>&#8226; {point}</Text>
-                ))}
-              </Stack>
-              <Text fontWeight="bold" mt={4} mb={2} color="gray.300">
-                Technologies Used:
-              </Text>
-              <Text>{selectedProject.technologies.join(', ')}</Text>
-            </ModalBody>
-
-            <ModalFooter>
-              <Button ml={3} onClick={onClose}>
-                Close
-              </Button>
-            </ModalFooter>
-          </ModalContent>
-        </Modal>
       )}
     </Box>
   );

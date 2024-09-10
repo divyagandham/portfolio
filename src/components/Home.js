@@ -107,7 +107,7 @@ const Home = () => {
         </Box>
         {showImage ? (
           <Image
-            src=""
+            src="/images/profile.jpg"
             alt={name}
             boxSize={{ base: '200px', md: '200px' }}
             objectFit="cover"

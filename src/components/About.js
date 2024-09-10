@@ -50,7 +50,7 @@ const About = () => {
   };
 
   return (
-    <Box p={[4, 6, 12]} bg="gray.800" color="white" maxW="800px" mx="auto">
+    <Box p={[4, 6, 12]} bg="black" color="white" maxW="800px" mx="auto" borderRadius={8} >
       <Heading mb={8} fontSize={['2xl', '3xl', '5xl']} textAlign="center">
         Contact
       </Heading>
@@ -78,7 +78,7 @@ const About = () => {
               size="lg"
             />
           </Link>
-          <Link href="/Divya Gandham.pdf" download isExternal>
+          <Link href="/DivyaGandhamResume.pdf" download isExternal>
             <IconButton
               aria-label="Download Resume"
               icon={<FaFileDownload />}
@@ -90,7 +90,7 @@ const About = () => {
         </Stack>
       </Stack>
 
-      <Box as="form" ref={form} onSubmit={sendEmail} bg="black" p={8} borderRadius="md" boxShadow="lg">
+      <Box as="form" ref={form} onSubmit={sendEmail} bg="black" p={8} borderRadius="md" style={{ boxShadow: '0 3px 10px indigo' }}>
         <Stack spacing={4}>
           <FormControl id="name" isRequired>
             <FormLabel>Your Name</FormLabel>
