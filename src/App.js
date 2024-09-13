@@ -7,6 +7,7 @@ import Expertise from './components/Expertise'
 import Experience from './components/Experience';
 import Projects from './components/Projects'
 import About from './components/About'
+import Dictaphone from './components/pushToTalk'
 
 const App = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -173,6 +174,19 @@ const App = () => {
               {name}
             </Link>
           ))}
+          <Dictaphone
+          sx={{
+            transition: 'transform 0.2s, box-shadow 0.2s',
+            color:  '#cc0044',
+            _hover: {
+              transform: 'scale(1.05)',
+              boxShadow: '0 4px 8px rgba(204, 0, 68, 0.5)',
+              color: '#cc0044',
+              //  backgroundColor:'#cc0044'
+            },
+          }}
+          />
+
         </Flex>
       </Flex>
       <Box p={4}>
